@@ -329,7 +329,7 @@ class FatTreeTopo(StructuredTopo):
         core_sws = range(1, k / 2 + 1)
         agg_sws = range(k / 2, k)
         edge_sws = range(0, k / 2)
-        hosts = range(2, k / 2 + 2)
+        hosts = range(2, k + 2)
 
         for p in pods:
             for e in edge_sws:
@@ -416,3 +416,4 @@ class FatTreeTopo(StructuredTopo):
             dst_port += 1
 
         return (src_port, dst_port)
+  

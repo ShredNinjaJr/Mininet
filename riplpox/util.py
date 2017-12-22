@@ -6,7 +6,7 @@ from ripl.routing import STStructuredRouting, RandomStructuredRouting
 from ripl.routing import HashedStructuredRouting
 from ripl.routing import ECMPStructuredRouting
 from ripl.routing import RPSStructuredRouting
-
+from ripl.routing import RFSStructuredRouting
 
 # TODO: this code is duplicated from mininet/bin/mn, except for TOPOS/topos.
 # To fix, extract into a library and make mininet an rpox dependency, or
@@ -38,7 +38,8 @@ ROUTING = {
     'random': RandomStructuredRouting,
     'hashed': HashedStructuredRouting,
     'ecmp': ECMPStructuredRouting,
-    'rps': RPSStructuredRouting
+    'rps': RPSStructuredRouting,
+    'fs': FSStructuredRouting
 }
 
 def getRouting( routing_type, topo ):
