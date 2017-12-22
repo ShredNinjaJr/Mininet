@@ -275,23 +275,20 @@ class LeafSpineTopo(StructuredTopo):
         
         spines = []
         for s in range(0, k):
-            spine_id = self.id_gen(k, s).name_str()
+            spine_id = self.id_gen(0, s).name_str()
             spine_opts = self.def_nopts(self.LAYER_SPINE, spine_id)
             self.addSwitch(spine_id, **spine_opts)
             spines.append(spine_id)
-            
-        leaves = []
-        hosts = []
-        for l in range(0, k*2):
-            leaf_id = self.id_gen(l, 1).name_str()
+         
+        for l in range(0, k * 2):
+            leaf_id = self.id_gen(1, l).name_str()
             leaf_opts = self.def_nopts(self.LAYER_LEAF, leaf_id)
-            leaves.append(self.addSwitch(leaf_id, **leaf_opts))
-            for h in range(0, k/2):
-                host_id = self.id_gen(l, h).name_str()
+            self.addSwitch(leaf_id, **leaf_opts)
+            for h in range(0, k / 2):
+                host_id = self.id_gen(2, l * (k / 2) + h).name_str()
                 host_opts = self.def_nopts(self.LAYER_HOST, host_id)
-                hosts.append(self.addSwitch(host_id, **host_opts))
+                self.addHost(host_id, **host_opts)
                 self.addLink(host_id, leaf_id)
             for s in spines:
                 self.addLink(leaf_id, s)
             
-
